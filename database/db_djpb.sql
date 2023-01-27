@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2023 at 07:36 AM
+-- Generation Time: Jan 27, 2023 at 07:36 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,11 +42,11 @@ CREATE TABLE `tbl_analisis_lk` (
 
 INSERT INTO `tbl_analisis_lk` (`id_jawaban`, `id_instansi`, `id_pertanyaan`, `kondisi_lk`, `seharusnya`, `bobot`) VALUES
 (1, 24, 1, 1, 'Ada', 100),
-(2, 24, 2, 1, 'Ada', 100),
+(2, 24, 2, 2, 'Ada', 0),
 (3, 24, 3, 1, 'Ada', 100),
-(4, 24, 4, 1, 'Ada', 100),
-(5, 24, 5, 1, 'Ada', 100),
-(6, 24, 6, 1, 'Ada', 100),
+(4, 24, 4, 2, 'Ada', 0),
+(5, 24, 5, 2, 'Ada', 0),
+(6, 24, 6, 2, 'Ada', 0),
 (7, 24, 7, 1, 'Sama', 100),
 (8, 24, 8, 1, 'Tidak', 100),
 (9, 24, 9, 1, 'Sama', 100),
@@ -277,10 +277,10 @@ CREATE TABLE `tbl_instansi` (
 --
 
 INSERT INTO `tbl_instansi` (`id_instansi`, `kode_instansi`, `nama_instansi`, `kode_ba`, `kode_eselon_1`, `kode_satker`, `jenis_kewenangan`, `nama_uappaw`, `kode_uappaw`, `periode`) VALUES
-(1, 'PTMASYARAKAT', 'Pengadilan Tinggi Kendari', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
-(2, 'PTIMIGRASI', 'Pengadilan Tinggi Kendari', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
-(3, 'PTAGAMAKENDARI', 'Pengadilan Tinggi Agama Kendari', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
-(4, 'KEJATI', 'Kejaksaan Tinggi Sulawesi Tenggara', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
+(1, 'PTMASYARAKAT', 'Pengadilan Tinggi Kendari', 5, 1, 400540, 'kosong', 'kosong', 'kosong', 'kosong'),
+(2, 'PTIMIGRASI', 'Pengadilan Tinggi Kendari', 5, 3, 400541, 'kosong', 'kosong', 'kosong', 'kosong'),
+(3, 'PTAGAMAKENDARI', 'Pengadilan Tinggi Agama Kendari', 5, 4, 576254, 'kosong', 'kosong', 'kosong', 'kosong'),
+(4, 'KEJATI', 'Kejaksaan Tinggi Sulawesi Tenggara', 6, 1, 8416, 'kosong', 'kosong', 'kosong', 'kosong'),
 (5, 'KUMHAM1', 'Kementerian Hukum dan Hak Asasi Manusia', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
 (6, 'KUMHAM2', 'Kementerian Hukum dan Hak Asasi Manusia', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
 (7, 'KANWILDJPb', 'Kantor Wilayah Direktorat Jenderal Perbendaharaan', 0, 0, 0, 'kosong', 'kosong', 'kosong', 'kosong'),
@@ -496,7 +496,7 @@ CREATE TABLE `tbl_sheet` (
 --
 
 INSERT INTO `tbl_sheet` (`id_sheet`, `id_instansi`, `sheet`, `total_skor`) VALUES
-(1, 24, 'Analisis LK', 0);
+(1, 24, 'Analisis LK', 6.66667);
 
 -- --------------------------------------------------------
 
@@ -584,8 +584,8 @@ CREATE TABLE `tbl_sub_sub_pertanyaan_analisis_lk` (
 --
 
 INSERT INTO `tbl_sub_sub_pertanyaan_analisis_lk` (`id_sub_sub_pertanyaan`, `id_instansi`, `sub_sub_pertanyaan`, `nilai`, `persen`) VALUES
-(1, 24, 'Kelengkapan Laporan Keuangan', 0, 5),
-(2, 24, 'Kesesuaian Laporan Hardcopy Dengan Monsakti', 0, 5),
+(1, 24, 'Kelengkapan Laporan Keuangan', 1.66666, 5),
+(2, 24, 'Kesesuaian Laporan Hardcopy Dengan Monsakti', 5, 5),
 (3, 24, 'Kesesuaian Dengan Persamaan Dasar Akuntansi', 0, 5),
 (4, 24, 'Neraca Percobaan Akruan', 0, 15),
 (5, 24, 'Laporan Operasional', 0, 10),
