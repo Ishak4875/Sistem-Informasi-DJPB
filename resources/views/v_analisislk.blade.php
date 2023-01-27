@@ -45,7 +45,7 @@
                 <tbody>
                   <?php $no=1; ?>
                   @foreach ($uraian as $data)
-                    <tr class="trdata" data-idsub="{{$data->id_sub}}" data-idinstansi="{{$data->id_instansi}}" data-idjawaban="{{$data->id_jawaban}}" data-bobotArray="{{$no}}">
+                    <tr class="trdata" data-idsub="{{$data->id_sub}}" data-idinstansi="{{$data->id_instansi}}" data-idjawaban="{{$data->id_jawaban}}" data-bobotArray="{{$no}}" data-idSubSubPertanyaan="{{$data->id_sub_sub_pertanyaan}}">
                         <td>{{$no++}}</td>
                         <td>{{$data->pertanyaan}}</td>
                         <td>
@@ -83,6 +83,7 @@
         var id_instansi = $(this).closest('.trdata').attr('data-idinstansi');
         var id_sub = $(this).closest('.trdata').attr('data-idsub');
         var id_jawaban = $(this).closest('.trdata').attr('data-idjawaban');
+        var id_sub_sub_pertanayaan = $(this).closest('.trdata').attr('data-idSubSubPertanyaan');
         var bobot_array = $(this).closest('.trdata').attr('data-bobotArray');
         console.log(id_instansi);
         console.log(id_sub);
@@ -103,7 +104,6 @@
         if(kondisi_lk == 1){
           bobot = 100;
         }
-
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,7 +119,7 @@
             kondisi_lk : kondisi_lk,
             seharusnya : seharusnya,
             bobot : bobot,
-            // _token :'{{ csrf_token() }}', 
+            id_sub_sub_pertanyaan : id_sub_sub_pertanayaan
           },
           success: function (data) {
             if(data.pesan !== undefined){

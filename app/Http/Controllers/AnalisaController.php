@@ -42,6 +42,7 @@ class AnalisaController extends Controller
         $kondisi_lk = $request->kondisi_lk;
         $seharusnya = $request->seharusnya;
         $bobot = $request->bobot;
+        $id_sub_sub = $request->id_sub_sub_pertanyaan;
 
         Request()->validate([
             'kondisi_lk'=>'required',
@@ -55,6 +56,22 @@ class AnalisaController extends Controller
         ];
 
         $this->AnalisaModel->updateKondisiLK($id_instansi,$id_sub,$id_jawaban,$data);
+        $avgBobotArray = $this->AnalisaModel->getAvgBobot($id_instansi,$id_sub_sub);
+
+        $persen = $this->AnalisaModel->getPersen($id_instansi,$id_sub_sub);
+
+        $nilai = (float)reset($avgBobotArray[0]) * $persen / 100;
+        $dataNilai = [
+            'nilai'=>$nilai
+        ];
+        $this->AnalisaModel->updateNilai($id_instansi,$id_sub_sub,$dataNilai);
+
+        $totalNilai = $this->AnalisaModel->getTotalSkor($id_instansi);
+        $dataTotalSkor = [
+            'total_skor'=>$totalNilai
+        ];
+        $sheet = 'Analisis LK';
+        $this->AnalisaModel->updateTotalSkor($id_instansi,$sheet,$dataTotalSkor);
 
         return response()->json([
             'success' => true,
@@ -64,7 +81,8 @@ class AnalisaController extends Controller
             'id_jawaban'=>$id_jawaban,
             'kondisi_lk'=>$kondisi_lk,
             'seharusnya'=>$seharusnya,
-            'bobot'=>$bobot
+            'bobot'=>$bobot,
+            'totalNilai'=>$totalNilai
         ]);
     }
 }
