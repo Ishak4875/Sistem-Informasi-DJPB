@@ -8,7 +8,7 @@
             <div class="card-header">
               <h3 class="card-title">Data Pegawai</h3>
             </div>
-            <form action="/instansi/pegawai/update/{{$pegawai->id_instansi}}" method="POST">
+            <form action="/instansi/pegawai/update/{{$pegawai->kode_satker}}" method="POST">
                 <div class="card-body table-responsive p-0">
                     @csrf
                     <table class="table table-hover text-nowrap">

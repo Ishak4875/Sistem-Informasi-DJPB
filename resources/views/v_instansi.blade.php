@@ -50,8 +50,8 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Kode Instansi</th>
-                    <th>Nama Instansi</th>
+                    <th>Kode Satker</th>
+                    <th>Nama Satker</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -60,11 +60,11 @@
                     @foreach ($instansi as $data)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$data->kode_instansi}}</td>
+                        <td>{{$data->kode_satker}}</td>
                         <td>{{$data->nama_instansi}}</td>
                         <td>
-                          <a href="/instansi/detail/{{$data->id_instansi}}" class="btn btn-sm btn-primary">Detail</a>
-                          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-danger{{$data->id_instansi}}">
+                          <a href="/instansi/detail/{{$data->kode_satker}}" class="btn btn-sm btn-primary">Detail</a>
+                          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-danger{{$data->kode_satker}}">
                             Delete
                           </button>
                         </td>
@@ -87,7 +87,7 @@
   </section>
 
   @foreach ($instansi as $data)
-  <div class="modal fade" id="modal-danger{{$data->id_instansi}}">
+  <div class="modal fade" id="modal-danger{{$data->kode_satker}}">
     <div class="modal-dialog">
       <div class="modal-content bg-danger">
         <div class="modal-header">
@@ -101,7 +101,7 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-outline-light" data-dismiss="modal">No</button>
-          <a href="/instansi/delete/{{$data->id_instansi}}" class="btn btn-outline-light">Yes</a>
+          <a href="/instansi/delete/{{$data->kode_satker}}" class="btn btn-outline-light">Yes</a>
         </div>
       </div>
       <!-- /.modal-content -->

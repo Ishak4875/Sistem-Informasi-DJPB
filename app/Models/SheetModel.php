@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class SheetModel extends Model
 {
-    public function getSheet($id_instansi)
+    public function getSheet($kode_satker)
     {
         return DB::table('tbl_sheet')
-            ->where('id_instansi',$id_instansi)
+            ->where('kode_satker',$kode_satker)
             ->get();
     }
 }

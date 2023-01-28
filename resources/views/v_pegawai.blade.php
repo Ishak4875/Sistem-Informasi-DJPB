@@ -78,7 +78,7 @@
               </table>
           </div>
           <div class="card-footer">
-            <a href="/instansi/pegawai/edit/{{$pegawai[0]->id_instansi}}" class="btn btn-warning">Edit</a>
+            <a href="/instansi/pegawai/edit/{{$pegawai[0]->kode_satker}}" class="btn btn-warning">Edit</a>
           </div>
         </div>
       </div>
@@ -94,11 +94,6 @@
           <div class="card-body table-responsive p-0">
             <table class="table table-hover text-nowrap">
               <tbody>
-                  <tr>
-                    <td>Kode Instansi</td>
-                    <td>:</td>
-                    <td>{{$instansi[0]->kode_instansi}}</td>   
-                  </tr>
                   <tr>
                     <td>Nama Instansi</td>
                     <td>:</td>
@@ -142,7 +137,7 @@
               </tbody>
             </table>
             <div class="card-footer">
-              <a href="/instansi/edit/{{$instansi[0]->id_instansi}}" class="btn btn-warning">Edit</a>
+              <a href="/instansi/edit/{{$instansi[0]->kode_satker}}" class="btn btn-warning">Edit</a>
             </div>
           </div>
           <!-- /.card-body -->
@@ -174,7 +169,7 @@
                       <td>{{$dataSheet->sheet}}</td>
                       <td>{{$dataSheet->total_skor}}</td>
                       <td>
-                        <a href="analisisLK/{{$dataSheet->id_instansi}}" class="btn btn-sm btn-primary">Detail</a>
+                        <a href="analisisLK/{{$dataSheet->kode_satker}}" class="btn btn-sm btn-primary">Detail</a>
                       </td>   
                     </tr>
                   @endforeach

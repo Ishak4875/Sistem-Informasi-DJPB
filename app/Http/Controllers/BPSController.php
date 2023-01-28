@@ -12,10 +12,10 @@ class BPSController extends Controller
         $this -> BPSModel = new BPSModel();
     }
 
-    public function getAllDataInstansi($id_instansi)
+    public function getAllDataInstansi($kode_satker)
     {
         $data = [
-            'instansi'=>$this->BPSModel->allDataInstansi($id_instansi)
+            'instansi'=>$this->BPSModel->allDataInstansi($kode_satker)
         ];
         return view('v_bps',$data);
     }

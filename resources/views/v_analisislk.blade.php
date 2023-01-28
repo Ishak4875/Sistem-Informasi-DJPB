@@ -45,7 +45,7 @@
                 <tbody>
                   <?php $no=1; ?>
                   @foreach ($uraian as $data)
-                    <tr class="trdata" data-idsub="{{$data->id_sub}}" data-idinstansi="{{$data->id_instansi}}" data-idjawaban="{{$data->id_jawaban}}" data-bobotArray="{{$no}}" data-idSubSubPertanyaan="{{$data->id_sub_sub_pertanyaan}}">
+                    <tr class="trdata" data-idsub="{{$data->id_sub}}" data-kodesatker="{{$data->kode_satker}}" data-idjawaban="{{$data->id_jawaban}}" data-bobotArray="{{$no}}" data-idSubSubPertanyaan="{{$data->id_sub_sub_pertanyaan}}">
                         <td>{{$no++}}</td>
                         <td>{{$data->pertanyaan}}</td>
                         <td>
@@ -80,14 +80,14 @@
     $(document).ready(function(e){
       $(".select2").change(function(e){
         e.preventDefault();
-        var id_instansi = $(this).closest('.trdata').attr('data-idinstansi');
+        var kode_satker = $(this).closest('.trdata').attr('data-kodesatker');
         var id_sub = $(this).closest('.trdata').attr('data-idsub');
         var id_jawaban = $(this).closest('.trdata').attr('data-idjawaban');
         var id_sub_sub_pertanayaan = $(this).closest('.trdata').attr('data-idSubSubPertanyaan');
         var bobot_array = $(this).closest('.trdata').attr('data-bobotArray');
-        console.log(id_instansi);
+        console.log(kode_satker);
         console.log(id_sub);
-        var url = '{{URL("/instansi/update/analisisLK")}}'+'/'+id_instansi+'/'+id_sub+'/'+id_jawaban;
+        var url = '{{URL("/instansi/update/analisisLK")}}'+'/'+kode_satker+'/'+id_sub+'/'+id_jawaban;
         console.log(url);
         console.log("Masuk script");
         var kondisi_lk = $('#kondisi_lk').val();
@@ -97,10 +97,6 @@
         console.log(seharusnya);
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         console.log(CSRF_TOKEN);
-        // var data = {};
-        // data.kondisi_lk = kondisi_lk;
-        // data.seharusnya = seharusnya;
-        // data.bobot = bobot;
         if(kondisi_lk == 1){
           bobot = 100;
         }

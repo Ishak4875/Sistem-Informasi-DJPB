@@ -11,14 +11,14 @@ class PegawaiModel extends Model
     public function detailPegawai($id_satker)
     {
         return DB::table('tbl_data_pegawai')
-            ->where('id_instansi',$id_satker)
+            ->where('kode_satker',$id_satker)
             ->first();
     }
 
     public function editPegawai($id_satker,$data)
     {
         DB::table('tbl_data_pegawai')
-            ->where('id_instansi',$id_satker)
+            ->where('kode_satker',$id_satker)
             ->update($data);
     }
 }

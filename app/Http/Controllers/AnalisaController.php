@@ -13,31 +13,31 @@ class AnalisaController extends Controller
         $this->AnalisaModel = new AnalisaModel();
     }
 
-    public function getSubSubAnalisaPertanyaan($id_instansi)
+    public function getSubSubAnalisaPertanyaan($kode_satker)
     {
         $data = [
-            'subsub'=>$this->AnalisaModel->getSubSubAnalisaPertanyaan($id_instansi)
+            'subsub'=>$this->AnalisaModel->getSubSubAnalisaPertanyaan($kode_satker)
         ];
         return view('v_subsubanalisislk',$data);
     }
 
-    public function getSubAnalisaPertanyaan($id_instansi,$id_sub_sub)
+    public function getSubAnalisaPertanyaan($kode_satker,$id_sub_sub)
     {
         $data = [
-            'sub'=>$this->AnalisaModel->getSubAnalisaPertanyaan($id_instansi,$id_sub_sub)
+            'sub'=>$this->AnalisaModel->getSubAnalisaPertanyaan($kode_satker,$id_sub_sub)
         ];
         return view('v_subanalisislk',$data);
     }
 
-    public function getAnalisaPertanyaan($id_instansi,$id_sub)
+    public function getAnalisaPertanyaan($kode_satker,$id_sub)
     {
         $data = [
-            'uraian'=>$this->AnalisaModel->getAnalisaPertanyaan($id_instansi,$id_sub)
+            'uraian'=>$this->AnalisaModel->getAnalisaPertanyaan($kode_satker,$id_sub)
         ];
         return view('v_analisislk',$data);
     }
 
-    public function updateKondisiLK($id_instansi,$id_sub,$id_jawaban,Request $request)
+    public function updateKondisiLK($kode_satker,$id_sub,$id_jawaban,Request $request)
     {
         $kondisi_lk = $request->kondisi_lk;
         $seharusnya = $request->seharusnya;
@@ -55,29 +55,29 @@ class AnalisaController extends Controller
             'bobot'=>$bobot
         ];
 
-        $this->AnalisaModel->updateKondisiLK($id_instansi,$id_sub,$id_jawaban,$data);
-        $avgBobotArray = $this->AnalisaModel->getAvgBobot($id_instansi,$id_sub_sub);
+        $this->AnalisaModel->updateKondisiLK($kode_satker,$id_sub,$id_jawaban,$data);
+        $avgBobotArray = $this->AnalisaModel->getAvgBobot($kode_satker,$id_sub_sub);
 
-        $persen = $this->AnalisaModel->getPersen($id_instansi,$id_sub_sub);
+        $persen = $this->AnalisaModel->getPersen($kode_satker,$id_sub_sub);
 
         $nilai = (float)reset($avgBobotArray[0]) * $persen / 100;
         $dataNilai = [
             'nilai'=>$nilai
         ];
-        $this->AnalisaModel->updateNilai($id_instansi,$id_sub_sub,$dataNilai);
+        $this->AnalisaModel->updateNilai($kode_satker,$id_sub_sub,$dataNilai);
 
-        $totalNilai = $this->AnalisaModel->getTotalSkor($id_instansi);
+        $totalNilai = $this->AnalisaModel->getTotalSkor($kode_satker);
         $dataTotalSkor = [
             'total_skor'=>$totalNilai
         ];
         $sheet = 'Analisis LK';
-        $this->AnalisaModel->updateTotalSkor($id_instansi,$sheet,$dataTotalSkor);
+        $this->AnalisaModel->updateTotalSkor($kode_satker,$sheet,$dataTotalSkor);
 
         return response()->json([
             'success' => true,
             'pesan' => 'Data Berhasil Diudapte!',
             'id_sub'=>$id_sub,
-            'id_instansi'=>$id_instansi,
+            'kode_satker'=>$kode_satker,
             'id_jawaban'=>$id_jawaban,
             'kondisi_lk'=>$kondisi_lk,
             'seharusnya'=>$seharusnya,

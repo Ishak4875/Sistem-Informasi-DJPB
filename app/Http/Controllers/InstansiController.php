@@ -37,25 +37,25 @@ class InstansiController extends Controller
         return view('v_instansi',$data);
     }
 
-    public function edit($id_instansi)
+    public function edit($kode_satker)
     {
-        if(!$this -> InstansiModel -> detailData($id_instansi)){
+        if(!$this -> InstansiModel -> detailData($kode_satker)){
             abort(404);
         }
 
         $data = [
-            'instansi' => $this -> InstansiModel -> detailData($id_instansi)
+            'instansi' => $this -> InstansiModel -> detailData($kode_satker)
         ];
         return view('v_editinstansi',$data);
     }
 
-    public function update($id_instansi)
+    public function update($kode_satker)
     {
         Request()->validate([
             'nama_instansi'=>'required',
             'kode_ba'=>'required',
             'kode_eselon_1'=>'required',
-            'kode_satker'=>'required',
+            'kode_satker'=>'required','unique:tbl_instansi',
             'jenis_kewenangan'=>'required',
             'nama_uappaw'=>'required',
             'kode_uappaw'=>'required',
@@ -69,6 +69,7 @@ class InstansiController extends Controller
             'nama_uappaw.required'=>'Wajib Diisi!!!',
             'kode_uappaw.required'=>'Wajib Diisi!!!',
             'periode.required'=>'Wajib Diisi!!!',
+            'kode_satker.unique'=>'Kode Satker Ini Sudah Terdaftar!!!'
         ]);
         $data = [
             'nama_instansi'=>Request()->nama_instansi,
@@ -81,14 +82,14 @@ class InstansiController extends Controller
             'periode'=>Request()->periode
         ];
 
-        $this->InstansiModel->editData($id_instansi,$data);
+        $this->InstansiModel->editData($kode_satker,$data);
         
         return redirect()->route('instansi')->with('pesan','Data Berhasil Di Update!!!');
     }
 
-    public function delete($id_instansi)
+    public function delete($kode_satker)
     {
-        $this->InstansiModel->deleteData($id_instansi);
+        $this->InstansiModel->deleteData($kode_satker);
         return redirect()->route('instansi')->with('pesan','Data Berhasil Di Hapus!!!');
     }
 }

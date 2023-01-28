@@ -10,13 +10,9 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/instansi/update/{{$instansi->id_instansi}}" method="POST">
+              <form action="/instansi/update/{{$instansi->kode_satker}}" method="POST">
                 @csrf
                 <div class="card-body">
-                  <div class="form-group">
-                    <label>Kode Instansi</label>
-                    <input type="text" class="form-control" name="kode_instansi" value="{{$instansi->kode_instansi}}" placeholder="Masukkan Kode Instasi" readonly>
-                  </div>
                   <div class="form-group">
                     <label>Nama Instansi</label>
                     <input type="text" class="form-control" name="nama_instansi" value="{{$instansi->nama_instansi}}" placeholder="Masukkan Nama Instansi">

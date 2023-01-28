@@ -12,22 +12,22 @@ class InstansiModel extends Model
         return DB::table('tbl_instansi')->simplePaginate(10);
     }
 
-    public function detailData($id_instansi)
+    public function detailData($kode_satker)
     {
-        return DB::table('tbl_instansi')->where('id_instansi',$id_instansi)->first();
+        return DB::table('tbl_instansi')->where('kode_satker',$kode_satker)->first();
     }
 
-    public function editData($id_instansi,$data)
+    public function editData($kode_satker,$data)
     {
         DB::table('tbl_instansi')
-            ->where('id_instansi',$id_instansi)
+            ->where('kode_satker',$kode_satker)
             ->update($data);
     }
 
-    public function deleteData($id_instansi)
+    public function deleteData($kode_satker)
     {
         DB::table('tbl_instansi')
-            ->where('id_instansi',$id_instansi)
+            ->where('kode_satker',$kode_satker)
             ->delete();
     }
 
@@ -35,6 +35,6 @@ class InstansiModel extends Model
     {
         return DB::table('tbl_instansi')
             ->where('kode_satker',$kode_satker)
-            ->get();
+            ->simplePaginate(10);
     }
 }

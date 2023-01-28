@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class BPSModel extends Model
 {
-    public function allDataInstansi($id_instansi)
+    public function allDataInstansi($kode_satker)
     {
         return DB::table('tbl_analisis_lk')
             ->leftJoin('tbl_pertanyaan_analisis_lk','tbl_pertanyaan_analisis_lk.id_pertanyaan', '=', 'tbl_analisis_lk.id_pertanyaan')
-            ->where('id_instansi',$id_instansi)
+            ->where('kode_satker',$kode_satker)
             ->get();
     }
 

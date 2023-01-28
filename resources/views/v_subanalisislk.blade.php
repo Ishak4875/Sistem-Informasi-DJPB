@@ -37,7 +37,7 @@
                                 <td>{{$no}}</td>
                                 <td>{{$data->sub_pertanyaan}}</td>
                                 <td>
-                                    <a href="/instansi/detail/analisisLK/pertanyaan/{{$data->id_instansi}}/{{$data->id_sub}}" class="btn btn-sm btn-primary">Detail</a>
+                                    <a href="/instansi/detail/analisisLK/pertanyaan/{{$data->kode_satker}}/{{$data->id_sub}}" class="btn btn-sm btn-primary">Detail</a>
                                 </td>
                             </tr>
                             <?php $no++; ?>
