@@ -58,6 +58,7 @@ class AnalisaModel extends Model
             ->join('tbl_pertanyaan_analisis_lk','tbl_pertanyaan_analisis_lk.id_sub','=','tbl_sub_pertanyaan_analisis_lk.id_sub')
             ->where('tbl_sub_sub_pertanyaan_analisis_lk.kode_satker',$kode_satker)
             ->where('tbl_sub_pertanyaan_analisis_lk.id_sub_sub_pertanyaan',$id_sub_sub_pertanyaan)
+            ->where('tbl_analisis_lk.disabled',0)
             ->whereColumn('tbl_analisis_lk.id_pertanyaan','tbl_pertanyaan_analisis_lk.id_pertanyaan')
             ->get();
     }

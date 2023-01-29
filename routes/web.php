@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnalisaController;
 use App\Http\Controllers\BPSController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+
 
 Route::get('/', [InstansiController::class, 'index'])->name('instansi');
 Route::get('/instansi/edit/{kode_satker}', [InstansiController::class, 'edit']);
@@ -31,3 +35,7 @@ Route::get("/instansi/detail/analisisLK/{kode_satker}",[AnalisaController::class
 Route::get("/instansi/detail/analisisLK/subpertanyaan/{kode_satker}/{id_sub_sub}",[AnalisaController::class,'getSubAnalisaPertanyaan']);
 Route::get("/instansi/detail/analisisLK/pertanyaan/{kode_satker}/{id_sub}",[AnalisaController::class,'getAnalisaPertanyaan']);
 Route::post("/instansi/update/analisisLK/{kode_satker}/{id_sub}/{id_jawaban}",[AnalisaController::class,'updateKondisiLK']);
+Route::get("/changePassword",[PasswordController::class,'getView']);
+Route::post("/changePassword/update",[PasswordController::class,'updatePasswrod']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

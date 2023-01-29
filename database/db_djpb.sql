@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 12:10 PM
+-- Generation Time: Jan 29, 2023 at 02:13 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -24,6 +24,75 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_analisis_lk`
 --
 
@@ -33,177 +102,168 @@ CREATE TABLE `tbl_analisis_lk` (
   `id_pertanyaan` int(11) NOT NULL,
   `kondisi_lk` int(11) NOT NULL,
   `seharusnya` varchar(255) NOT NULL,
-  `bobot` int(11) NOT NULL
+  `bobot` int(11) NOT NULL,
+  `disabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_analisis_lk`
 --
 
-INSERT INTO `tbl_analisis_lk` (`id_jawaban`, `kode_satker`, `id_pertanyaan`, `kondisi_lk`, `seharusnya`, `bobot`) VALUES
-(1, '429068', 1, 1, 'Ada', 100),
-(2, '429068', 2, 1, 'Ada', 100),
-(3, '429068', 3, 1, 'Ada', 100),
-(4, '429068', 4, 1, 'Ada', 100),
-(5, '429068', 5, 1, 'Ada', 100),
-(6, '429068', 6, 1, 'Ada', 100),
-(7, '429068', 7, 1, 'Sama', 100),
-(8, '429068', 8, 1, 'Tidak', 100),
-(9, '429068', 9, 1, 'Sama', 100),
-(10, '429068', 10, 1, 'Sama', 100),
-(11, '429068', 11, 2, 'Tidak', 0),
-(12, '429068', 12, 2, 'Tidak', 0),
-(13, '429068', 13, 1, 'Tidak', 100),
-(14, '429068', 14, 1, 'Tidak', 100),
-(15, '429068', 15, 1, 'Tidak', 100),
-(16, '429068', 16, 1, 'Ada', 100),
-(17, '429068', 17, 1, 'Ada', 100),
-(18, '429068', 18, 2, 'Ya/Tidak', 0),
-(19, '429068', 19, 1, 'Ya', 100),
-(20, '429068', 20, 1, 'Tidak', 100),
-(21, '429068', 21, 1, 'Ya', 100),
-(22, '429068', 22, 1, 'Tidak', 100),
-(23, '429068', 23, 1, 'Tidak', 100),
-(24, '429068', 24, 2, 'Ya', 0),
-(25, '429068', 25, 1, 'Ada/Tidak', 100),
-(26, '429068', 26, 1, 'Ya', 100),
-(27, '429068', 27, 2, 'Ya', 0),
-(28, '429068', 28, 1, 'Ada', 100),
-(29, '429068', 29, 1, 'Ada', 100),
-(30, '429068', 30, 1, 'Ada', 100),
-(31, '429068', 31, 1, 'Ada', 100),
-(32, '429068', 32, 1, 'Ada', 100),
-(33, '429068', 33, 1, 'Ada', 100),
-(34, '429068', 34, 1, 'Ada', 100),
-(35, '429068', 35, 1, 'Ada', 100),
-(36, '429068', 36, 1, 'Ada', 100),
-(37, '429068', 37, 1, 'Ada', 100),
-(38, '429068', 38, 1, 'Ada', 100),
-(39, '429068', 39, 1, 'Ada', 100),
-(40, '429068', 40, 1, 'Ada', 100),
-(41, '429068', 41, 1, 'Ada', 100),
-(42, '429068', 42, 1, 'Ada', 100),
-(43, '429068', 43, 1, 'Ada', 100),
-(44, '429068', 44, 1, 'Ada', 100),
-(45, '429068', 45, 1, 'Ada', 100),
-(46, '429068', 46, 1, 'Ada', 100),
-(47, '429068', 47, 1, 'Ada', 100),
-(48, '429068', 48, 1, 'Ada', 100),
-(49, '429068', 49, 1, 'Ada', 100),
-(50, '429068', 50, 1, 'Ada', 100),
-(51, '429068', 51, 1, 'Ada', 100),
-(52, '429068', 52, 1, 'Ada', 100),
-(53, '429068', 53, 1, 'Ada', 100),
-(54, '429068', 54, 1, 'Ada', 100),
-(55, '429068', 55, 1, 'Ada', 100),
-(56, '429068', 56, 1, 'Ada', 100),
-(57, '429068', 57, 1, 'Ada', 100),
-(58, '429068', 58, 1, 'Ada', 100),
-(59, '429068', 59, 1, 'Ada', 100),
-(60, '429068', 60, 1, 'Ada', 100),
-(61, '429068', 61, 1, 'Ada', 100),
-(62, '429068', 62, 1, 'Ada', 100),
-(63, '429068', 63, 1, 'Ada', 100),
-(64, '429068', 64, 1, 'Ada', 100),
-(65, '429068', 65, 1, 'Ada', 100),
-(66, '429068', 66, 1, 'Ada', 100),
-(67, '429068', 67, 1, 'Ada', 100),
-(68, '429068', 68, 1, 'Ada', 100),
-(69, '429068', 69, 1, 'Ada', 100),
-(70, '429068', 70, 1, 'Ada', 100),
-(71, '429068', 71, 1, 'Ada', 100),
-(72, '429068', 72, 1, 'Ada', 100),
-(73, '429068', 73, 1, 'Ada', 100),
-(74, '429068', 74, 1, 'Ada', 100),
-(75, '429068', 75, 1, 'Ada', 100),
-(76, '429068', 76, 1, 'Ada', 100),
-(77, '429068', 77, 1, 'Ada', 100),
-(78, '429068', 78, 1, 'Ada', 100),
-(79, '429068', 79, 1, 'Ada', 100),
-(80, '429068', 80, 1, 'Ada', 100),
-(81, '429068', 81, 1, 'Ada', 100),
-(82, '429068', 82, 1, 'Ada', 100),
-(83, '429068', 83, 1, 'Ada', 100),
-(84, '429068', 84, 1, 'Ada', 100),
-(85, '429068', 85, 1, 'Ada', 100),
-(86, '429068', 86, 1, 'Ada', 100),
-(87, '429068', 87, 1, 'Ada', 100),
-(88, '429068', 88, 1, 'Ada', 100),
-(89, '429068', 89, 1, 'Ada', 100),
-(90, '429068', 90, 1, 'Ada', 100),
-(91, '429068', 91, 1, 'Ada', 100),
-(92, '429068', 92, 1, 'Ada', 100),
-(93, '429068', 93, 1, 'Ada', 100),
-(94, '429068', 94, 1, 'Ada', 100),
-(95, '429068', 95, 1, 'Ada', 100),
-(96, '429068', 96, 1, 'Ada', 100),
-(97, '429068', 97, 1, 'Ada', 100),
-(98, '429068', 98, 1, 'Ada', 100),
-(99, '429068', 99, 1, 'Ada', 100),
-(100, '429068', 100, 1, 'Ada', 100),
-(101, '429068', 101, 1, 'Ada', 100),
-(102, '429068', 102, 1, 'Ada', 100),
-(103, '429068', 103, 1, 'Ada', 100),
-(104, '429068', 104, 1, 'Ada', 100),
-(105, '429068', 105, 1, 'Ada', 100),
-(106, '429068', 106, 1, 'Ada', 100),
-(107, '429068', 107, 1, 'Ada', 100),
-(108, '429068', 108, 1, 'Ada', 100),
-(109, '429068', 109, 1, 'Ada', 100),
-(110, '429068', 110, 1, 'Ada', 100),
-(111, '429068', 111, 1, 'Ada', 100),
-(112, '429068', 112, 1, 'Ada', 100),
-(113, '429068', 113, 1, 'Ada', 100),
-(114, '429068', 114, 1, 'Ada', 100),
-(115, '429068', 115, 1, 'Ada', 100),
-(116, '429068', 116, 1, 'Ada', 100),
-(117, '429068', 117, 1, 'Ada', 100),
-(118, '429068', 118, 1, 'Ada', 100),
-(119, '429068', 119, 1, 'Ada', 100),
-(120, '429068', 120, 1, 'Ada', 100),
-(121, '429068', 121, 1, 'Ada', 100),
-(122, '429068', 122, 1, 'Ada', 100),
-(123, '429068', 123, 1, 'Ada', 100),
-(124, '429068', 124, 1, 'Ada', 100),
-(125, '429068', 125, 1, 'Ada', 100),
-(126, '429068', 126, 1, 'Ada', 100),
-(127, '429068', 127, 1, 'Ada', 100),
-(128, '429068', 128, 1, 'Ada', 100),
-(129, '429068', 129, 1, 'Ada', 100),
-(130, '429068', 130, 1, 'Ada', 100),
-(131, '429068', 131, 1, 'Ada', 100),
-(132, '429068', 132, 1, 'Ada', 100),
-(133, '429068', 133, 1, 'Ada', 100),
-(134, '429068', 134, 1, 'Ada', 100),
-(135, '429068', 135, 1, 'Ada', 100),
-(136, '429068', 136, 1, 'Ada', 100),
-(137, '429068', 137, 1, 'Ada', 100),
-(138, '429068', 138, 1, 'Ada', 100),
-(139, '429068', 139, 1, 'Ada', 100),
-(140, '429068', 140, 1, 'Ada', 100),
-(141, '429068', 141, 1, 'Ada', 100),
-(142, '429068', 142, 1, 'Ada', 100),
-(143, '429068', 143, 1, 'Ada', 100),
-(144, '429068', 144, 1, 'Ada', 100),
-(145, '429068', 145, 1, 'Ada', 100),
-(146, '429068', 146, 1, 'Ada', 100),
-(147, '429068', 147, 1, 'Ada', 100),
-(148, '429068', 148, 1, 'Ada', 100),
-(149, '429068', 149, 1, 'Ada', 100),
-(150, '429068', 150, 1, 'Ada', 100),
-(151, '429068', 151, 1, 'Ada', 100),
-(152, '429068', 152, 1, 'Ada', 100),
-(153, '429068', 153, 1, 'Ada', 100),
-(154, '429068', 154, 1, 'Ada', 100),
-(155, '429068', 155, 1, 'Ada', 100),
-(156, '429068', 156, 1, 'Ada', 100),
-(157, '429068', 157, 1, 'Ada', 100),
-(158, '429068', 158, 1, 'Ada', 100),
-(159, '429068', 159, 1, 'Ada', 100),
-(160, '429068', 160, 1, 'Ada', 100),
-(161, '429068', 161, 1, 'Ada', 100),
-(162, '429068', 162, 1, 'Ada', 100),
-(163, '429068', 163, 1, 'Ada', 100);
+INSERT INTO `tbl_analisis_lk` (`id_jawaban`, `kode_satker`, `id_pertanyaan`, `kondisi_lk`, `seharusnya`, `bobot`, `disabled`) VALUES
+(1, '429068', 1, 1, 'Ada', 100, 0),
+(2, '429068', 2, 1, 'Ada', 100, 0),
+(3, '429068', 3, 1, 'Ada', 100, 0),
+(4, '429068', 4, 1, 'Ada', 100, 0),
+(5, '429068', 5, 1, 'Ada', 100, 0),
+(6, '429068', 6, 1, 'Ada', 100, 0),
+(7, '429068', 7, 1, 'Sama', 100, 0),
+(8, '429068', 8, 1, 'Tidak', 100, 0),
+(9, '429068', 9, 1, 'Sama', 100, 0),
+(10, '429068', 10, 1, 'Sama', 100, 0),
+(11, '429068', 11, 2, 'Tidak', 0, 0),
+(12, '429068', 12, 2, 'Tidak', 0, 0),
+(13, '429068', 13, 1, 'Tidak', 100, 0),
+(14, '429068', 14, 1, 'Tidak', 100, 0),
+(15, '429068', 15, 1, 'Tidak', 100, 0),
+(16, '429068', 16, 1, 'Ada', 100, 0),
+(17, '429068', 17, 1, 'Ada', 100, 0),
+(18, '429068', 18, 2, 'Ya/Tidak', 0, 0),
+(19, '429068', 19, 1, 'Ya', 100, 0),
+(20, '429068', 20, 1, 'Tidak', 100, 0),
+(21, '429068', 21, 1, 'Ya', 100, 0),
+(22, '429068', 22, 1, 'Tidak', 100, 0),
+(23, '429068', 23, 1, 'Tidak', 100, 0),
+(24, '429068', 24, 2, 'Ya', 0, 0),
+(25, '429068', 25, 1, 'Ada/Tidak', 100, 0),
+(26, '429068', 26, 1, 'Ya', 100, 0),
+(27, '429068', 27, 2, 'Ya', 0, 0),
+(28, '429068', 28, 1, 'Ada', 100, 1),
+(29, '429068', 29, 1, 'Ada', 100, 1),
+(30, '429068', 30, 1, 'Tidak', 100, 0),
+(31, '429068', 31, 1, 'Tidak', 100, 0),
+(32, '429068', 32, 1, 'Tidak', 100, 0),
+(33, '429068', 33, 1, 'Tidak', 100, 0),
+(34, '429068', 34, 1, 'Tidak', 100, 0),
+(35, '429068', 35, 1, 'Tidak', 100, 0),
+(36, '429068', 36, 1, 'Tidak', 100, 0),
+(37, '429068', 37, 1, 'Tidak', 100, 0),
+(38, '429068', 38, 1, 'Tidak', 100, 0),
+(39, '429068', 39, 1, 'Ya/Tidak', 100, 1),
+(40, '429068', 40, 1, 'Ya/Tidak', 100, 1),
+(41, '429068', 41, 1, 'Tidak', 100, 0),
+(42, '429068', 42, 1, 'Tidak', 100, 0),
+(43, '429068', 43, 1, 'Tidak', 100, 0),
+(44, '429068', 44, 1, 'Tidak', 100, 0),
+(45, '429068', 45, 1, 'Tidak', 100, 0),
+(46, '429068', 46, 1, 'Tidak', 100, 0),
+(47, '429068', 47, 1, 'Ada', 100, 1),
+(48, '429068', 48, 1, 'Ada', 100, 1),
+(49, '429068', 49, 1, 'Ada', 100, 1),
+(50, '429068', 50, 1, 'Tidak', 0, 0),
+(51, '429068', 51, 1, 'Tidak', 100, 0),
+(52, '429068', 52, 1, 'Ya/Tidak', 100, 1),
+(53, '429068', 53, 1, 'Ya', 100, 0),
+(54, '429068', 54, 1, 'Tidak', 100, 0),
+(55, '429068', 55, 1, 'Tidak', 100, 0),
+(56, '429068', 56, 1, 'Tidak', 100, 0),
+(57, '429068', 57, 1, 'Tidak', 100, 0),
+(58, '429068', 58, 1, 'Tidak', 100, 0),
+(59, '429068', 59, 1, 'Tidak', 100, 0),
+(60, '429068', 60, 1, 'Tidak', 100, 0),
+(61, '429068', 61, 1, 'Tidak', 100, 0),
+(62, '429068', 62, 1, 'Ya', 100, 0),
+(63, '429068', 63, 1, 'Ya', 100, 0),
+(64, '429068', 64, 1, 'Tidak', 100, 0),
+(65, '429068', 65, 1, 'Sama', 100, 0),
+(66, '429068', 66, 1, 'Ya', 100, 0),
+(67, '429068', 67, 1, 'Ya', 100, 0),
+(68, '429068', 68, 1, 'Tidak', 100, 0),
+(69, '429068', 69, 1, 'Tidak', 100, 0),
+(70, '429068', 70, 1, 'Ya', 100, 0),
+(71, '429068', 71, 2, 'Ya', 0, 0),
+(72, '429068', 72, 1, 'Ada/Tidak', 100, 1),
+(73, '429068', 73, 1, 'Ada', 100, 0),
+(74, '429068', 74, 2, 'Ada', 0, 0),
+(75, '429068', 75, 2, 'Ada/Tidak', 100, 1),
+(76, '429068', 76, 2, 'Ada', 0, 0),
+(77, '429068', 77, 1, 'Ada/Tidak', 100, 1),
+(78, '429068', 78, 1, 'Ada', 100, 0),
+(79, '429068', 79, 2, 'Ada/Tidak', 0, 0),
+(80, '429068', 80, 2, 'Ada/Tidak', 0, 0),
+(81, '429068', 81, 1, 'Ada/Tidak', 100, 1),
+(82, '429068', 82, 1, 'Ada', 100, 0),
+(83, '429068', 83, 1, 'Ada', 100, 0),
+(84, '429068', 84, 2, 'Ya/Tidak', 100, 1),
+(85, '429068', 85, 2, 'Ya', 0, 0),
+(86, '429068', 86, 2, 'Ya/Tidak', 100, 1),
+(87, '429068', 87, 2, 'Ya', 0, 0),
+(88, '429068', 88, 1, 'Ada/Tidak', 100, 0),
+(89, '429068', 89, 2, 'Ada/Tidak', 0, 1),
+(90, '429068', 90, 1, 'Ada/Tidak', 100, 1),
+(91, '429068', 91, 2, 'Ada/Tidak', 0, 1),
+(92, '429068', 92, 1, 'Ada/Tidak', 100, 1),
+(93, '429068', 93, 1, 'Ada', 100, 0),
+(94, '429068', 94, 1, 'Tidak', 100, 0),
+(95, '429068', 95, 1, 'Tidak', 100, 0),
+(96, '429068', 96, 1, 'Tidak', 100, 0),
+(97, '429068', 97, 1, 'Ya', 100, 0),
+(98, '429068', 98, 1, 'Ada', 100, 1),
+(99, '429068', 99, 1, 'Tidak', 100, 0),
+(100, '429068', 100, 1, 'Ada', 100, 1),
+(101, '429068', 101, 1, 'Ada', 100, 1),
+(102, '429068', 102, 1, 'Tidak', 100, 0),
+(103, '429068', 103, 1, 'Ada', 100, 1),
+(104, '429068', 104, 1, 'Ada', 100, 1),
+(105, '429068', 105, 2, 'Tidak', 0, 0),
+(106, '429068', 106, 1, 'Tidak', 100, 0),
+(107, '429068', 107, 1, 'Tidak', 100, 0),
+(108, '429068', 108, 1, 'Tidak', 100, 0),
+(109, '429068', 109, 1, 'Tidak', 100, 0),
+(110, '429068', 110, 1, 'Tidak', 100, 0),
+(111, '429068', 111, 1, 'Tidak', 100, 0),
+(112, '429068', 112, 1, 'Tidak', 100, 0),
+(113, '429068', 113, 1, 'Ada', 100, 1),
+(114, '429068', 114, 1, 'Ada', 100, 1),
+(115, '429068', 115, 1, 'Ya', 100, 0),
+(116, '429068', 116, 1, 'Ya', 100, 0),
+(117, '429068', 117, 1, 'Tidak', 100, 0),
+(118, '429068', 118, 1, 'Ya', 100, 0),
+(119, '429068', 119, 1, 'Tidak', 100, 0),
+(120, '429068', 120, 1, 'Ya', 100, 0),
+(121, '429068', 121, 1, 'Ya', 100, 0),
+(122, '429068', 122, 2, 'Ya', 0, 0),
+(123, '429068', 123, 1, 'Sama', 100, 0),
+(124, '429068', 124, 1, 'Ya', 100, 0),
+(125, '429068', 125, 2, 'Ya', 0, 0),
+(126, '429068', 126, 1, 'Ya', 100, 0),
+(127, '429068', 127, 1, 'Ada', 100, 0),
+(128, '429068', 128, 1, 'Ya', 100, 0),
+(129, '429068', 129, 1, 'Ya', 100, 0),
+(130, '429068', 130, 1, 'Ya', 100, 0),
+(131, '429068', 131, 1, 'Ya', 100, 0),
+(132, '429068', 132, 1, 'Ya', 100, 0),
+(133, '429068', 133, 1, 'Ya', 100, 0),
+(134, '429068', 134, 1, 'Ya', 100, 0),
+(135, '429068', 135, 2, 'Ada', 0, 0),
+(136, '429068', 136, 2, 'Ada', 0, 1),
+(137, '429068', 137, 2, 'Ada', 0, 0),
+(138, '429068', 138, 2, 'Ada', 0, 0),
+(139, '429068', 139, 1, 'Ada', 100, 0),
+(140, '429068', 140, 1, 'Ada', 100, 0),
+(141, '429068', 141, 2, 'Ada', 0, 0),
+(142, '429068', 142, 1, 'Ada', 100, 0),
+(143, '429068', 143, 1, 'Ada', 100, 0),
+(144, '429068', 144, 2, 'Ada', 0, 0),
+(145, '429068', 145, 2, 'Ada', 0, 0),
+(146, '429068', 146, 2, 'Ada', 0, 1),
+(147, '429068', 147, 2, 'Ada', 0, 0),
+(148, '429068', 148, 2, 'Ada', 0, 0),
+(149, '429068', 149, 2, 'Ada', 0, 0),
+(150, '429068', 150, 2, 'Ada', 0, 0),
+(151, '429068', 151, 2, 'Ada', 0, 1),
+(152, '429068', 152, 2, 'Ada', 0, 0),
+(153, '429068', 153, 2, 'Ada', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -467,15 +527,15 @@ INSERT INTO `tbl_pertanyaan_analisis_lk` (`id_pertanyaan`, `id_sub`, `pertanyaan
 (142, 47, 'Apakah terdapat pengungkapan atas realisasi Beban dalam rangka penanganan pandemi Covid-19 dengan menggunakan akun Non penanganan pandemi Covid-19'),
 (143, 47, 'Apakah terdapat pengungkapan atas realisasi Beban dalam rangka penanganan pandemi Covid-19 dengan menggunakan akun penanganan pandemi Covid-19'),
 (144, 48, 'Apakah terdapat pengungkapan atas Transaksi Antar Entitas berupa Transfer Masuk – Transfer Keluar, dapat berupa pengiriman barang persediaan, peralatan dan mesin berupa alat kesehatan, dan/atau jenis-jenis BMN lainnya yang spesifik untuk penanganan pandem'),
-(155, 48, 'Apakah terdapat pengungkapan atas realisasi pengesahan hibah langsung baik berupa uang, barang, maupun jasa yang diterima oleh K/L dalam rangka penanganan pandemi COVID-19'),
-(156, 49, 'Apakah terdapat pengungkapan atas Pos Aset, antara lain :'),
-(157, 49, 'Kenaikan/penurunan Piutang sebagai dampak pandemi Covid-19'),
-(158, 49, 'Kenaikan/penurunan Persediaan sebagai dampak pandemi Covid-19'),
-(159, 49, 'Kenaikan/penurunan KDP sebagai dampak pandemi Covid-19'),
-(160, 49, 'Kenaikan/penurunan pos aset yang lain, sebutkan ……………….'),
-(161, 49, 'Apakah terdapat pengungkapan atas Pos Kewajiban, antara lain :'),
-(162, 49, 'Kenaikan/penurunan Utang kepada pihak ketiga sebagai dampak pandemi Covid-19'),
-(163, 49, 'Kenaikan/penurunan Hibah yang belum disahkan sebagai dampak pandemi Covid-19');
+(145, 48, 'Apakah terdapat pengungkapan atas realisasi pengesahan hibah langsung baik berupa uang, barang, maupun jasa yang diterima oleh K/L dalam rangka penanganan pandemi COVID-19'),
+(146, 49, 'Apakah terdapat pengungkapan atas Pos Aset, antara lain :'),
+(147, 49, 'Kenaikan/penurunan Piutang sebagai dampak pandemi Covid-19'),
+(148, 49, 'Kenaikan/penurunan Persediaan sebagai dampak pandemi Covid-19'),
+(149, 49, 'Kenaikan/penurunan KDP sebagai dampak pandemi Covid-19'),
+(150, 49, 'Kenaikan/penurunan pos aset yang lain, sebutkan ……………….'),
+(151, 49, 'Apakah terdapat pengungkapan atas Pos Kewajiban, antara lain :'),
+(152, 49, 'Kenaikan/penurunan Utang kepada pihak ketiga sebagai dampak pandemi Covid-19'),
+(153, 49, 'Kenaikan/penurunan Hibah yang belum disahkan sebagai dampak pandemi Covid-19');
 
 -- --------------------------------------------------------
 
@@ -495,7 +555,7 @@ CREATE TABLE `tbl_sheet` (
 --
 
 INSERT INTO `tbl_sheet` (`id_sheet`, `kode_satker`, `sheet`, `total_skor`) VALUES
-(1, '429068', 'Analisis LK', 10);
+(1, '429068', 'Analisis LK', 86.4683);
 
 -- --------------------------------------------------------
 
@@ -585,21 +645,72 @@ CREATE TABLE `tbl_sub_sub_pertanyaan_analisis_lk` (
 INSERT INTO `tbl_sub_sub_pertanyaan_analisis_lk` (`id_sub_sub_pertanyaan`, `kode_satker`, `sub_sub_pertanyaan`, `nilai`, `persen`) VALUES
 (1, '429068', 'Kelengkapan Laporan Keuangan', 5, 5),
 (2, '429068', 'Kesesuaian Laporan Hardcopy Dengan Monsakti', 5, 5),
-(3, '429068', 'Kesesuaian Dengan Persamaan Dasar Akuntansi', 0, 5),
-(4, '429068', 'Neraca Percobaan Akruan', 0, 15),
-(5, '429068', 'Laporan Operasional', 0, 10),
-(6, '429068', 'Laporan Perubahan Ekuitas', 0, 5),
-(7, '429068', 'Neraca', 0, 10),
-(8, '429068', 'Telaah Antar Laporan Keuangan', 0, 10),
-(9, '429068', 'Kesesuaian Dengan L-BMN', 0, 10),
-(10, '429068', 'Laporan Realisasi Anggaran', 0, 10),
-(11, '429068', 'SATKONS dan Pengawasan Temuan BPK Tahun-Tahun Sebelumnya', 0, 5),
-(12, '429068', 'Catatan Atas Laporan Keuangan', 0, 5),
-(13, '429068', 'Analisis Lainnya', 0, 5);
+(3, '429068', 'Kesesuaian Dengan Persamaan Dasar Akuntansi', 5, 5),
+(4, '429068', 'Neraca Percobaan Akruan', 12.3529, 15),
+(5, '429068', 'Laporan Operasional', 10, 10),
+(6, '429068', 'Laporan Perubahan Ekuitas', 5, 5),
+(7, '429068', 'Neraca', 10, 10),
+(8, '429068', 'Telaah Antar Laporan Keuangan', 4.61538, 10),
+(9, '429068', 'Kesesuaian Dengan L-BMN', 10, 10),
+(10, '429068', 'Laporan Realisasi Anggaran', 8.75, 10),
+(11, '429068', 'SATKONS dan Pengawasan Temuan BPK Tahun-Tahun Sebelumnya', 4.375, 5),
+(12, '429068', 'Catatan Atas Laporan Keuangan', 4.375, 5),
+(13, '429068', 'Analisis Lainnya', 2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'UserDJPB', 'djpbkendari@gmail.com', NULL, '$2y$10$GC5ap6HGONB3EJbUNor/8.7iZQM2twQYhe4aO7aMBpjc6BjyVmM0K', NULL, '2023-01-28 03:43:10', '2023-01-28 03:43:10');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
 -- Indexes for table `tbl_analisis_lk`
@@ -652,8 +763,33 @@ ALTER TABLE `tbl_sub_sub_pertanyaan_analisis_lk`
   ADD KEY `id_instansi` (`kode_satker`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_analisis_lk`
@@ -677,7 +813,7 @@ ALTER TABLE `tbl_instansi`
 -- AUTO_INCREMENT for table `tbl_pertanyaan_analisis_lk`
 --
 ALTER TABLE `tbl_pertanyaan_analisis_lk`
-  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `tbl_sheet`
@@ -696,6 +832,12 @@ ALTER TABLE `tbl_sub_pertanyaan_analisis_lk`
 --
 ALTER TABLE `tbl_sub_sub_pertanyaan_analisis_lk`
   MODIFY `id_sub_sub_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

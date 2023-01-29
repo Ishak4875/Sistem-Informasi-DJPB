@@ -32,11 +32,11 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Uraian</th>
+                    <th style="width: 35%">Uraian</th>
                     <th>Kondisi LK</th>
                     <th>Seharusnya</th>
                     <th>Bobot</th>
