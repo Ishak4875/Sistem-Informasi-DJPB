@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2023 at 02:13 PM
+-- Generation Time: Jan 31, 2023 at 01:41 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -111,7 +111,7 @@ CREATE TABLE `tbl_analisis_lk` (
 --
 
 INSERT INTO `tbl_analisis_lk` (`id_jawaban`, `kode_satker`, `id_pertanyaan`, `kondisi_lk`, `seharusnya`, `bobot`, `disabled`) VALUES
-(1, '429068', 1, 1, 'Ada', 100, 0),
+(1, '429068', 1, 2, 'Ada', 0, 0),
 (2, '429068', 2, 1, 'Ada', 100, 0),
 (3, '429068', 3, 1, 'Ada', 100, 0),
 (4, '429068', 4, 1, 'Ada', 100, 0),
@@ -369,6 +369,51 @@ INSERT INTO `tbl_instansi` (`id_instansi`, `nama_instansi`, `kode_ba`, `kode_ese
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_lra`
+--
+
+CREATE TABLE `tbl_lra` (
+  `id_jawaban_lra` int(11) NOT NULL,
+  `kode_satker` varchar(255) NOT NULL,
+  `id_pertanyaan_lra` int(11) NOT NULL,
+  `lembar_muka` bigint(20) NOT NULL,
+  `lk_aplikasi` bigint(20) NOT NULL,
+  `calk` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_lra`
+--
+
+INSERT INTO `tbl_lra` (`id_jawaban_lra`, `kode_satker`, `id_pertanyaan_lra`, `lembar_muka`, `lk_aplikasi`, `calk`) VALUES
+(1, '429068', 1, 109213000, 109213000, 109213000),
+(2, '429068', 2, 0, 0, 0),
+(3, '429068', 3, 154240139, 154240139, 154240139),
+(4, '429068', 4, 0, 0, 0),
+(5, '429068', 5, 60152770000, 60152770000, 60152770000),
+(6, '429068', 6, 90365346000, 90365346000, 90365346000),
+(7, '429068', 7, 7264243000, 7264243000, 7264243000),
+(8, '429068', 8, 0, 0, 0),
+(9, '429068', 9, 0, 0, 0),
+(10, '429068', 10, 0, 0, 0),
+(11, '429068', 11, 0, 0, 0),
+(12, '429068', 12, 0, 0, 0),
+(13, '429068', 13, 43604667623, 43604667623, 43604667623),
+(14, '429068', 14, 39726582000, 39726582000, 39726582000),
+(15, '429068', 15, 3988142143, 3988142143, 3988142143),
+(16, '429068', 16, 0, 0, 0),
+(17, '429068', 17, 0, 0, 0),
+(18, '429068', 18, 0, 0, 0),
+(19, '429068', 19, 0, 0, 0),
+(20, '429068', 20, 0, 0, 0),
+(21, '429068', 21, 0, 0, 0),
+(22, '429068', 22, 0, 0, 0),
+(23, '429068', 23, 0, 0, 0),
+(24, '429068', 24, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_pertanyaan_analisis_lk`
 --
 
@@ -540,6 +585,48 @@ INSERT INTO `tbl_pertanyaan_analisis_lk` (`id_pertanyaan`, `id_sub`, `pertanyaan
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_pertanyaan_lra`
+--
+
+CREATE TABLE `tbl_pertanyaan_lra` (
+  `id_pertanyaan_lra` int(11) NOT NULL,
+  `id_sub_lra` int(11) NOT NULL,
+  `pertanyaan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_pertanyaan_lra`
+--
+
+INSERT INTO `tbl_pertanyaan_lra` (`id_pertanyaan_lra`, `id_sub_lra`, `pertanyaan`) VALUES
+(1, 1, 'Pagu Penerimaan Dalam Negeri'),
+(2, 1, 'Pagu Hibah'),
+(3, 2, 'Realisasi Penerimaan Dalam Negeri'),
+(4, 2, 'Realisasi Hibah'),
+(5, 3, 'Pagu Belanja Pegawai'),
+(6, 3, 'Pagu Belanja Barang'),
+(7, 3, 'Pagu Belanja Modal'),
+(8, 3, 'Pagu Pembayaran Bunga Utang'),
+(9, 3, 'Pagu Subsidi'),
+(10, 3, 'Pagu Hibah'),
+(11, 3, 'Pagu Bantuan Sosial'),
+(12, 3, 'Pagu Belanja Lain-lain'),
+(13, 4, 'Belanja Pegawai'),
+(14, 4, 'Belanja Barang'),
+(15, 4, 'Belanja Modal'),
+(16, 4, 'Pembayaran Bunga Utang'),
+(17, 4, 'Subsidi'),
+(18, 4, 'Hibah'),
+(19, 4, 'Bantuan Sosial'),
+(20, 4, 'Belanja Lain-lain'),
+(21, 5, 'Pagu Pembiayaan Dalam Negeri (neto)'),
+(22, 5, 'Pagu Pembiayaan Luar Negeri (neto)'),
+(23, 6, 'Realisasi Pembiayaan Dalam Negeri (neto)'),
+(24, 6, 'Realisasi Pembiayaan Luar Negeri (neto)');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_sheet`
 --
 
@@ -555,7 +642,7 @@ CREATE TABLE `tbl_sheet` (
 --
 
 INSERT INTO `tbl_sheet` (`id_sheet`, `kode_satker`, `sheet`, `total_skor`) VALUES
-(1, '429068', 'Analisis LK', 86.4683);
+(1, '429068', 'Analisis LK', 85.635);
 
 -- --------------------------------------------------------
 
@@ -627,6 +714,30 @@ INSERT INTO `tbl_sub_pertanyaan_analisis_lk` (`id_sub`, `id_sub_sub_pertanyaan`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_sub_pertanyaan_lra`
+--
+
+CREATE TABLE `tbl_sub_pertanyaan_lra` (
+  `id_sub_lra` int(11) NOT NULL,
+  `id_sub_sub_pertanyaan_lra` int(11) NOT NULL,
+  `sub_pertanyaan_lra` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_sub_pertanyaan_lra`
+--
+
+INSERT INTO `tbl_sub_pertanyaan_lra` (`id_sub_lra`, `id_sub_sub_pertanyaan_lra`, `sub_pertanyaan_lra`) VALUES
+(1, 1, 'Pagu Pendapatan Negara dan Hibah'),
+(2, 1, 'Realisasi Pendapatan Negara dan Hibah'),
+(3, 2, 'Pagu Belanja'),
+(4, 2, 'Realisasi Belanja'),
+(5, 3, 'Pagu Pembiayaan'),
+(6, 3, 'Realisasi Pembiayaan');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_sub_sub_pertanyaan_analisis_lk`
 --
 
@@ -643,7 +754,7 @@ CREATE TABLE `tbl_sub_sub_pertanyaan_analisis_lk` (
 --
 
 INSERT INTO `tbl_sub_sub_pertanyaan_analisis_lk` (`id_sub_sub_pertanyaan`, `kode_satker`, `sub_sub_pertanyaan`, `nilai`, `persen`) VALUES
-(1, '429068', 'Kelengkapan Laporan Keuangan', 5, 5),
+(1, '429068', 'Kelengkapan Laporan Keuangan', 4.16667, 5),
 (2, '429068', 'Kesesuaian Laporan Hardcopy Dengan Monsakti', 5, 5),
 (3, '429068', 'Kesesuaian Dengan Persamaan Dasar Akuntansi', 5, 5),
 (4, '429068', 'Neraca Percobaan Akruan', 12.3529, 15),
@@ -656,6 +767,53 @@ INSERT INTO `tbl_sub_sub_pertanyaan_analisis_lk` (`id_sub_sub_pertanyaan`, `kode
 (11, '429068', 'SATKONS dan Pengawasan Temuan BPK Tahun-Tahun Sebelumnya', 4.375, 5),
 (12, '429068', 'Catatan Atas Laporan Keuangan', 4.375, 5),
 (13, '429068', 'Analisis Lainnya', 2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sub_sub_pertanyaan_lra`
+--
+
+CREATE TABLE `tbl_sub_sub_pertanyaan_lra` (
+  `id_sub_sub_pertanyaan_lra` int(11) NOT NULL,
+  `sub_sub_pertanyaan_lra` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_sub_sub_pertanyaan_lra`
+--
+
+INSERT INTO `tbl_sub_sub_pertanyaan_lra` (`id_sub_sub_pertanyaan_lra`, `sub_sub_pertanyaan_lra`) VALUES
+(1, 'Pendapatan Negara Dan Hibah'),
+(2, 'Belanja'),
+(3, 'Pembiayaan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_total_lra`
+--
+
+CREATE TABLE `tbl_total_lra` (
+  `id_total_lra` int(11) NOT NULL,
+  `kode_satker` varchar(255) NOT NULL,
+  `id_sub_lra` int(11) NOT NULL,
+  `lembar_muka_total` bigint(20) NOT NULL,
+  `lk_aplikasi_total` bigint(20) NOT NULL,
+  `calk_total` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_total_lra`
+--
+
+INSERT INTO `tbl_total_lra` (`id_total_lra`, `kode_satker`, `id_sub_lra`, `lembar_muka_total`, `lk_aplikasi_total`, `calk_total`) VALUES
+(1, '429068', 1, 109213000, 109213000, 109213000),
+(2, '429068', 2, 154240139, 154240139, 154240139),
+(3, '429068', 3, 157782359000, 157782359000, 157782359000),
+(4, '429068', 4, 87319391766, 87319391766, 87319391766),
+(5, '429068', 5, 0, 0, 0),
+(6, '429068', 6, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -734,11 +892,26 @@ ALTER TABLE `tbl_instansi`
   ADD UNIQUE KEY `kode_satker` (`kode_satker`);
 
 --
+-- Indexes for table `tbl_lra`
+--
+ALTER TABLE `tbl_lra`
+  ADD PRIMARY KEY (`id_jawaban_lra`),
+  ADD KEY `kode_satker` (`kode_satker`),
+  ADD KEY `id_pertanyaan_lra` (`id_pertanyaan_lra`);
+
+--
 -- Indexes for table `tbl_pertanyaan_analisis_lk`
 --
 ALTER TABLE `tbl_pertanyaan_analisis_lk`
   ADD PRIMARY KEY (`id_pertanyaan`),
   ADD KEY `id_sub` (`id_sub`);
+
+--
+-- Indexes for table `tbl_pertanyaan_lra`
+--
+ALTER TABLE `tbl_pertanyaan_lra`
+  ADD PRIMARY KEY (`id_pertanyaan_lra`),
+  ADD KEY `id_sub_lra` (`id_sub_lra`);
 
 --
 -- Indexes for table `tbl_sheet`
@@ -756,11 +929,35 @@ ALTER TABLE `tbl_sub_pertanyaan_analisis_lk`
   ADD KEY `id_sub_sub_pertanyaan` (`id_sub_sub_pertanyaan`);
 
 --
+-- Indexes for table `tbl_sub_pertanyaan_lra`
+--
+ALTER TABLE `tbl_sub_pertanyaan_lra`
+  ADD PRIMARY KEY (`id_sub_lra`),
+  ADD KEY `id_sub_sub_pertanyaan_lra` (`id_sub_sub_pertanyaan_lra`);
+
+--
 -- Indexes for table `tbl_sub_sub_pertanyaan_analisis_lk`
 --
 ALTER TABLE `tbl_sub_sub_pertanyaan_analisis_lk`
   ADD PRIMARY KEY (`id_sub_sub_pertanyaan`),
   ADD KEY `id_instansi` (`kode_satker`);
+
+--
+-- Indexes for table `tbl_sub_sub_pertanyaan_lra`
+--
+ALTER TABLE `tbl_sub_sub_pertanyaan_lra`
+  ADD PRIMARY KEY (`id_sub_sub_pertanyaan_lra`);
+
+--
+-- Indexes for table `tbl_total_lra`
+--
+ALTER TABLE `tbl_total_lra`
+  ADD PRIMARY KEY (`id_total_lra`),
+  ADD KEY `kode_satker` (`kode_satker`),
+  ADD KEY `id_sub_sub_pertanyaan_lra` (`id_sub_lra`),
+  ADD KEY `id_sub_pertanyaan_lra` (`id_sub_lra`),
+  ADD KEY `id_sub_sub_lra` (`id_sub_lra`),
+  ADD KEY `id_sub_lra` (`id_sub_lra`);
 
 --
 -- Indexes for table `users`
@@ -810,10 +1007,22 @@ ALTER TABLE `tbl_instansi`
   MODIFY `id_instansi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
+-- AUTO_INCREMENT for table `tbl_lra`
+--
+ALTER TABLE `tbl_lra`
+  MODIFY `id_jawaban_lra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT for table `tbl_pertanyaan_analisis_lk`
 --
 ALTER TABLE `tbl_pertanyaan_analisis_lk`
   MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+
+--
+-- AUTO_INCREMENT for table `tbl_pertanyaan_lra`
+--
+ALTER TABLE `tbl_pertanyaan_lra`
+  MODIFY `id_pertanyaan_lra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_sheet`
@@ -828,10 +1037,28 @@ ALTER TABLE `tbl_sub_pertanyaan_analisis_lk`
   MODIFY `id_sub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
+-- AUTO_INCREMENT for table `tbl_sub_pertanyaan_lra`
+--
+ALTER TABLE `tbl_sub_pertanyaan_lra`
+  MODIFY `id_sub_lra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbl_sub_sub_pertanyaan_analisis_lk`
 --
 ALTER TABLE `tbl_sub_sub_pertanyaan_analisis_lk`
   MODIFY `id_sub_sub_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tbl_sub_sub_pertanyaan_lra`
+--
+ALTER TABLE `tbl_sub_sub_pertanyaan_lra`
+  MODIFY `id_sub_sub_pertanyaan_lra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_total_lra`
+--
+ALTER TABLE `tbl_total_lra`
+  MODIFY `id_total_lra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

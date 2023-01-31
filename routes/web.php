@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnalisaController;
 use App\Http\Controllers\BPSController;
 use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\LRAController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
@@ -35,7 +36,13 @@ Route::get("/instansi/detail/analisisLK/{kode_satker}",[AnalisaController::class
 Route::get("/instansi/detail/analisisLK/subpertanyaan/{kode_satker}/{id_sub_sub}",[AnalisaController::class,'getSubAnalisaPertanyaan']);
 Route::get("/instansi/detail/analisisLK/pertanyaan/{kode_satker}/{id_sub}",[AnalisaController::class,'getAnalisaPertanyaan']);
 Route::post("/instansi/update/analisisLK/{kode_satker}/{id_sub}/{id_jawaban}",[AnalisaController::class,'updateKondisiLK']);
+
 Route::get("/changePassword",[PasswordController::class,'getView']);
 Route::post("/changePassword/update",[PasswordController::class,'updatePasswrod']);
+
+Route::get("/instansi/detail/sublra/{kode_satker}/{sub_sub_pertanyaan_lra}",[LRAController::class,'getSubLRA']);
+Route::get("/instansi/detail/sublra/uraianlra/{kode_satker}/{sub_sub_pertanyaan_lra}/{sub_pertanyaan_lra}",[LRAController::class,'getLRA'])->name('lra');
+Route::get("/instansi/detail/sublra/uraianlra/edit/{kode_satker}/{sub_sub_pertanyaan_lra}/{sub_pertanyaan_lra}/{id_jawaban_lra}",[LRAController::class,'editLRA']);
+Route::post("/instansi/detail/sublra/uraianlra/update/{kode_satker}/{sub_sub_pertanyaan_lra}/{sub_pertanyaan_lra}/{id_jawaban_lra}",[LRAController::class,'updateLRA']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

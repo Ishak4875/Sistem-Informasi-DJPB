@@ -137,6 +137,7 @@
               </tbody>
             </table>
             <div class="card-footer">
+              <?php $kode_satker = $instansi[0]->kode_satker; ?>
               <a href="/instansi/edit/{{$instansi[0]->kode_satker}}" class="btn btn-warning">Edit</a>
             </div>
           </div>
@@ -170,6 +171,44 @@
                       <td>{{$dataSheet->total_skor}}</td>
                       <td>
                         <a href="analisisLK/{{$dataSheet->kode_satker}}" class="btn btn-sm btn-primary">Detail</a>
+                      </td>   
+                    </tr>
+                  @endforeach
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Data LRA</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Uraian</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $no = 1; ?>
+                @foreach ($datalra as $data)
+                  @foreach ($data as $datavaluelra)
+                    <tr>
+                      <td>{{$no++}}</td>
+                      <td>{{$datavaluelra->sub_sub_pertanyaan_lra}}</td>
+                      <td>
+                        <a href="/instansi/detail/sublra/{{$kode_satker}}/{{$datavaluelra->id_sub_sub_pertanyaan_lra}}" class="btn btn-sm btn-primary">Detail</a>
                       </td>   
                     </tr>
                   @endforeach

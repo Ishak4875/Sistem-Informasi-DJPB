@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PegawaiModel;
 use App\Models\InstansiModel;
+use App\Models\LRAModel;
 use App\Models\SheetModel;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class PegawaiController extends Controller
         $this -> PegawaiModel = new PegawaiModel();
         $this -> InstansiModel = new InstansiModel();
         $this -> SheetModel = new SheetModel();
+        $this -> LRAModel = new LRAModel();
     }
 
     public function getDetailPegawai($id_satker)
@@ -34,10 +36,16 @@ class PegawaiController extends Controller
         $sheet = [
             $this->SheetModel->getSheet($id_satker)
         ];
+
+        $dataLRA = [
+            'subsub'=>$this->LRAModel->getSubSubLRA()
+        ];
+
         return view('v_pegawai')
             ->with('sheet',$sheet)
             ->with('pegawai',$pegawai)
-            ->with('instansi',$instansi);
+            ->with('instansi',$instansi)
+            ->with('datalra',$dataLRA);
     }
 
     public function getDetailPegawai2($id_satker)
